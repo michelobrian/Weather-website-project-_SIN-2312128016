@@ -26,7 +26,7 @@ body{
     .container {
         text-align: center;
         padding: 5px;
-        color: #ebe3e344;
+        color: #11000044;
         margin-left: 10%;
         margin-right: 10%;
         /* From https://css.glass */
@@ -48,7 +48,7 @@ body{
     h2 {
         font-size: 2rem;
         margin-bottom: 30px;
-        color: #5d5757;
+        color: #fbf7f7;
         
     }
     h3 {
