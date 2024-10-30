@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/examples/footers/">
 </head>
 <h1>Wester Province Weather App</h1>
     <div class="container">
@@ -14,6 +13,7 @@
         <button id="searchBtn">Search</button>
     </div>
     <script>
+        //Event listner that listens to the click event and searches for the entered city
         document.getElementById("searchBtn").addEventListener("click", function() {
             const city = document.getElementById("cityInput").value;
             if (city) {
@@ -21,7 +21,7 @@
             }
         });
 
-        // Geolocate and set the default city
+        // Geolocate and set the default city - Attemps to use your location as the default
         function geolocateUser() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
