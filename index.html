@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://getbootstrap.com/docs/5.3/examples/footers/">
-</head>
+   </head>
 <h1>Wester Province Weather App</h1>
     <div class="container">
        <h3>Lets Search</h3>
@@ -21,7 +20,7 @@
             }
         });
 
-        // Geolocate and set the default city
+        // The js fucntion attempt to use the browsers location to set the default search city
         function geolocateUser() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -30,13 +29,14 @@
                     reverseGeocode(lat, lon);
                 }, function(error) {
                     console.error("Geolocation error:", error.message);
-                    // Set a default city if geolocation fails
+
+                    //if geolocation fails to get city the default city is Mongu
                     document.getElementById("cityInput").value = "Mongu"; 
                     getWeatherData("Mongu");
                 });
             } else {
                 // Geolocation not supported, use a default city
-                document.getElementById("cityInput").value = "Mongu"; // Default city
+                document.getElementById("cityInput").value = "Mongu"; 
                 getWeatherData("Mongu");
             }
         }
@@ -87,23 +87,18 @@
         <p id="currentWindSpeed"></p>
         <img id="currentWeatherIcon" src="" alt="Weather Icon">
     </div>
-
         <div  id="forecast">
             <h2>5-Day Forecast</h2>
             <div id="forecastDays"></div>
         </div>
     </div>
-
 <footer>
-        <span class="copyright"><strong> Wester Province</strong> Designed By Brian Michelo, SIN: 2312128016</span>
+        <span class="copyright"><strong> Wester Province Weather Website</strong><br> Designed By Brian Michelo, SIN: 2312128016</span>
         <ul>
-            <li><a href="https://zrdc.org/">ZRDC</a></li>
-            <li><a href="https://www.icuzambia.net/">ICU Zambia</a></li>
+            <li><a href="https://zrdc.org/"><strong>ZRDC</strong></a></li>
+            <li><a href="https://www.icuzambia.net/"><strong>ICU Zambia</strong></a></li>
         </ul>
-        
 </footer>
- 
-
     <script src="script.js"></script>
 </body>
 </html>

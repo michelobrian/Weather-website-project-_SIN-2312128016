@@ -8,7 +8,7 @@ document.getElementById("searchBtn").addEventListener("click", function() {
     
     function getWeatherData(city) {
         
-        const apiKey = 'YOUR API KEY ';
+        const apiKey = '88011519fda03e2aeb33ec7683282e28';
         const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     
         fetch(apiUrl)
@@ -38,15 +38,13 @@ document.getElementById("searchBtn").addEventListener("click", function() {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
             const data = await response.json();
             displayCurrentWeather(data);
-            
-        
+               
             getWeatherForecast(data.coord.lat, data.coord.lon);
         } catch (error) {
             console.error('Error fetching weather data:', error);
         }
     }
-    
-    
+        
     async function getWeatherForecast(lat, lon) {
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`);
