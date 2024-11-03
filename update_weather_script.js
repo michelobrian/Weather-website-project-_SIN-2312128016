@@ -38,7 +38,7 @@ function displayCurrentWeather(data) {
 
     // Calculate local time for the city based on timezone offset
     const timezoneOffset = data.timezone; // offset in seconds
-    const localTime = new Date(new Date().getTime() + timezoneOffset * 1000).toLocaleString();
+    const localTime = new Date(new Date().getTime() + timezoneOffset * 1000 ).toLocaleString();
     document.getElementById('currentTime').textContent = `Local Time: ${localTime}`;
 
     setWeatherBackground(data.weather[0].main);     

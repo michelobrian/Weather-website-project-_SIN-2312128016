@@ -4,79 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <link rel="stylesheet" href="scripts/style.css">
+    <link rel="stylesheet" href="style.css">
    </head>
 <h1>Wester Province Weather App</h1>
     <div class="container">
-       <h3>Lets Search</h3>
+       <h3>Find My City</h3>
         <input type="text" id="cityInput" placeholder="Enter city name">
         <button id="searchBtn">Search</button>
     </div>
-    <script>
-        document.getElementById("searchBtn").addEventListener("click", function() {
-            const city = document.getElementById("cityInput").value;
-            if (city) {
-                getWeatherData(city);
-            }
-        });
 
-        // The js fucntion attempt to use the browsers location to set the default search city
-        function geolocateUser() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    const lat = position.coords.latitude;
-                    const lon = position.coords.longitude;
-                    reverseGeocode(lat, lon);
-                }, function(error) {
-                    console.error("Geolocation error:", error.message);
+                <script>
+                    document.getElementById("searchBtn").addEventListener("click", function() {
+                        const city = document.getElementById("cityInput").value;
+                        if (city) {
+                            getWeatherData(city);
+                        }
+                    });
 
-                    //if geolocation fails to get city the default city is Mongu
-                    document.getElementById("cityInput").value = "Mongu"; 
-                    getWeatherData("Mongu");
-                });
-            } else {
-                // Geolocation not supported, use a default city
-                document.getElementById("cityInput").value = "Mongu"; 
-                getWeatherData("Mongu");
-            }
-        }
+                    // The js fucntion attempt to use the browsers location to set the default search city
+                    function geolocateUser() {
+                        if (navigator.geolocation) {
+                            navigator.geolocation.getCurrentPosition(function(position) {
+                                const lat = position.coords.latitude;
+                                const lon = position.coords.longitude;
+                                reverseGeocode(lat, lon);
+                            }, function(error) {
+                                console.error("Geolocation error:", error.message);
 
-        // Use a reverse geocoding API to get city name from latitude and longitude
-        function reverseGeocode(lat, lon) {
-            // Example using a free reverse geocoding service (OpenStreetMap's Nominatim)
-            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data && data.address && data.address.city) {
-                        const city = data.address.city;
-                        document.getElementById("cityInput").value = city;
-                        getWeatherData(city);
-                    } else {
-                        console.error("City not found");
-                        // Use a default city if the city is not found
-                        document.getElementById("cityInput").value = "Mongu";
-                        getWeatherData("Mongu");
+                                //if geolocation fails to get city the default city is Mongu
+                                document.getElementById("cityInput").value = "Mongu"; 
+                                getWeatherData("Mongu");
+                            });
+                        } else {
+                            // Geolocation not supported, use a default city
+                            document.getElementById("cityInput").value = "Mongu"; 
+                            getWeatherData("Mongu");
+                        }
                     }
-                })
-                .catch(error => {
-                    console.error("Reverse geocoding error:", error);
-                    // Use a default city on error
-                    document.getElementById("cityInput").value = "Mongu";
-                    getWeatherData("Mongu");
-                });
-        }
 
-        // Dummy function to simulate fetching weather data
-        function getWeatherData(city) {
-            console.log(`Fetching weather data for ${city}`);
-            // Implement your actual weather API logic here
-        }
+                    // Use a reverse geocoding API to get city name from latitude and longitude
+                    function reverseGeocode(lat, lon) {
+                        // Example using a free reverse geocoding service (OpenStreetMap's Nominatim)
+                        fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data && data.address && data.address.city) {
+                                    const city = data.address.city;
+                                    document.getElementById("cityInput").value = city;
+                                    getWeatherData(city);
+                                } else {
+                                    console.error("City not found");
+                                    // Use a default city if the city is not found
+                                    document.getElementById("cityInput").value = "Mongu";
+                                    getWeatherData("Mongu");
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Reverse geocoding error:", error);
+                                // Use a default city on error
+                                document.getElementById("cityInput").value = "Mongu";
+                                getWeatherData("Mongu");
+                            });
+                    }
 
-        // Call geolocation function on page load
-        window.onload = function() {
-            geolocateUser();
-        };
-</script>
+                    // Dummy function to simulate fetching weather data
+                    function getWeatherData(city) {
+                        console.log(`Fetching weather data for ${city}`);
+                        // Implement your actual weather API logic here
+                    }
+
+                    // Call geolocation function on page load
+                    window.onload = function() {
+                        geolocateUser();
+                    };
+            </script>
     
     <div class="container" id="currentWeather">
         <h2 id="location"></h2>
@@ -87,18 +88,19 @@
         <p id="currentWindSpeed"></p>
         <img id="currentWeatherIcon" src="" alt="Weather Icon">
     </div>
-        <div  id="forecast">
+        <div class="container" id="forecast">
             <h2>5-Day Forecast</h2>
             <div id="forecastDays"></div>
         </div>
     </div>
 <footer>
+    
         <span class="copyright"><strong> Wester Province Weather Website</strong><br> Designed By Brian Michelo, SIN: 2312128016</span>
         <ul>
-            <li><a href="https://zrdc.org/"><strong>ZRDC</strong></a></li>
-            <li><a href="https://www.icuzambia.net/"><strong>ICU Zambia</strong></a></li>
+            <li><a href="https://zrdc.org/" target="_blank"><strong>ZRDC</strong></a></li>
+            <li><a href="https://www.icuzambia.net/" target="_blank"><strong>ICU Zambia</strong></a></li>
         </ul>
 </footer>
-    <script src="scripts/update_weather_script.js"></script>
+    <script src="update_weather_script.js"></script>
 </body>
 </html>
