@@ -10,6 +10,9 @@ const apiKey = '5d67ecca30bfa52b4c8fd153e8c94584';
 async function getWeatherData(city) {         
     try {             
         const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);             
+        if (response.status === 404) {
+            alert("City not found. Please enter a valid city name")
+        }
         const data = await response.json();             
         displayCurrentWeather(data);                             
         getWeatherForecast(data.coord.lat, data.coord.lon);         

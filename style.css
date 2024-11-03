@@ -233,3 +233,52 @@ body {
 .copyright {
     color: #2c0303;
 }
+
+button {
+    cursor: pointer;
+    font-weight: 700;
+    font-family: Helvetica, "sans-serif";
+    transition: all 0.2s;
+    padding: 10px 20px;
+    border-radius: 100px;
+    background: #5d0263;
+    border: 1px solid transparent;
+   
+    font-size: 15px;
+  }
+  
+  button:hover {
+    background: #096502;
+  }
+  
+  .text {
+    color: #fff;
+  }
+  
+  button > svg {
+    width: 34px;
+    margin-left: 10px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  button:hover svg {
+    transform: translateX(5px);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+
+input {
+    color: rgb(107, 6, 6);
+    border: 2px solid #8707ff;
+    border-radius: 10px;
+    padding: 10px 25px;
+    background: transparent;
+    max-width: 190px;
+  }
+  
+  .input:active {
+    box-shadow: 2px 2px 15px #8707ff inset;
+  }
+  
