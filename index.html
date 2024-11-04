@@ -44,7 +44,6 @@
 
                     // Use a reverse geocoding API to get city name from latitude and longitude
                     function reverseGeocode(lat, lon) {
-                        // Example using a free reverse geocoding service (OpenStreetMap's Nominatim)
                         fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`)
                             .then(response => response.json())
                             .then(data => {
@@ -66,11 +65,10 @@
                                 getWeatherData("Mongu");
                             });
                     }
-
-                    // Dummy function to simulate fetching weather data
+                   
                     function getWeatherData(city) {
                         console.log(`Fetching weather data for ${city}`);
-                        // Implement your actual weather API logic here
+                       
                     }
 
                     // Call geolocation function on page load
